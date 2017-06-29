@@ -6,9 +6,5 @@ Date: 2016-12-13
 Author: Jigar Desai
 Maintainer: <jdesai@ncsu.edu>
 Description: Uses time series expression data to calcuate rates which are then used to calculate p-value of time steps with significant changes
-<<<<<<< HEAD
 License: GNUAGPLv3
-=======
-License: GNUAGPLv3
->>>>>>> 4b1413d171973d2c3c5777ce7bf140dc9a612a77
 LazyData: TRUE
