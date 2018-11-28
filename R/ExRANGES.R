@@ -52,7 +52,12 @@ GRD2.C<-function(x, samples, rw, last.time.step){
   return(ret)
 }
 
-
+#' The following functions is used to calcuates the RANGES values to be used to calculate ExRANGES values.
+#' slopes from calc.slopes, should be slopes between time points.
+#' sample.size How many time should the slopes be sampled for each gene to calculate a pvalue.
+#' Time series, slope, ExRANGES
+#' sample.pval.calc(slopes=matrix.of.slopes, sample.size=10000)
+                     
 sample.pval.calc<-function(slopes, sample.size=10000){
   print("Calculating Slope Distributions")
   distributions<-pbapply(slopes,2,function(x) sample(x,sample.size,replace=T))
