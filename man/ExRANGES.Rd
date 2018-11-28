@@ -33,7 +33,9 @@ sample.size - How many time should the slopes be sampled for each gene to calcul
 }
 \examples{
 
-#sample.pval.calc(calc.slopes(time.series), sample.size=100)
-#sample.pval.calc(calc.slopes(time.series, cycle=T, las.time.step=3), sample.size=100)
+#time.series<-matrix(sample(1:1000,100), nrow = 10, ncol = 10)
+#colnames(time.series)<-paste(1:10,"time",sep = "_")
+#slopes=calc.slopes(time.series = time.series)
+#signifance_of_slope=sample.pval.calc(slopes = slope, sample.size = 1000)
 
 }
