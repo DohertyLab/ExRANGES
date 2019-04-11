@@ -9,6 +9,8 @@
 #' calc.slopes(time.series.matrix, cycle=T, last.time.step=3.5)
 
 require(pbapply)
+require(spatstat)
+
 calc.slopes<-function(time.series, cycle=F, last.time.step){
   print("Calculating Slopes")
   slopes<-pbapply(time.series,1,function(x) getrowdiff(rw = x, cycle = cycle, last.time.step = last.time.step))
@@ -58,25 +60,35 @@ GRD2.C<-function(x, samples, rw, last.time.step){
 #' Time series, slope, ExRANGES
 #' sample.pval.calc(slopes=matrix.of.slopes, sample.size=10000)
                      
-sample.pval.calc<-function(slopes, sample.size=10000){
+sample.pval.calc<-function(slopes, sample.size=10000, use_density_function=T){
   print("Calculating Slope Distributions")
   distributions<-pbapply(slopes,2,function(x) sample(x,sample.size,replace=T))
   print("Calculating per Gene p.value")
+  if(use_density_function==T){
+  list.of.ecdf<-pblapply(1:length(distributions[1,]),function(x) CDF(density(distributions[,x])))
+  }else{
   list.of.ecdf<-pblapply(1:length(distributions[1,]),function(x) ecdf(distributions[,x]))
+  }
   gene.change<-(slopes) # change when colnames on an object with less than two dimensions
   colnames(gene.change)<-colnames(distributions)
+
   pvals<-lapply(1:length(gene.change[1,]), function(x) list.of.ecdf[[x]](gene.change[,x]))
   print("Formating Matrix...")
   pvals<-sapply(pvals, unlist)
   colnames(pvals)<-colnames(distributions)
   pvals<-t(pvals)
+  if(use_density_function==F)
+  for(i in 1:length(pvals[1,])){
+    pvals[which(pvals[,i]==min(pvals[,i])),i]=0
+  }
+
   pvals<-pvals.transform(pvals, sample.size)
   colnames(pvals)<-rownames(slopes)
   if(length(colnames(pvals)) > length(unique(colnames(pvals)))){
-  slopenames=unique(colnames(pvals))
-  pvals_ret=pbsapply(unique(colnames(pvals)),function(x) apply(pvals[,which(colnames(pvals)==x)],1,mean))
+    slopenames=unique(colnames(pvals))
+    pvals_ret=pbsapply(unique(colnames(pvals)),function(x) apply(pvals[,which(colnames(pvals)==x)],1,mean))
   } else{
-    pvals_ret=pvals
+   pvals_ret=pvals
   }
   return(pvals_ret)
 }
