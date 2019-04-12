@@ -9,6 +9,7 @@
 #' calc.slopes(time.series.matrix, cycle=T, last.time.step=3.5)
 
 require(pbapply)
+require(spatstat)
 
 calc.slopes<-function(time.series, cycle=F, last.time.step){
   print("Calculating Slopes")
@@ -63,12 +64,12 @@ sample.pval.calc<-function(slopes, sample.size=10000, use_density_function=F){
   print("Calculating Slope Distributions")
   distributions<-pbapply(slopes,2,function(x) sample(x,sample.size,replace=T))
   print("Calculating per Gene p.value")
-  #if(use_density_function==T){
-  #list.of.ecdf<-pblapply(1:length(distributions[1,]),function(x) CDF(density(distributions[,x])))
-  #}
-  #else{
+  if(use_density_function==T){
+  list.of.ecdf<-pblapply(1:length(distributions[1,]),function(x) CDF(density(distributions[,x])))
+  }
+  else{
   list.of.ecdf<-pblapply(1:length(distributions[1,]),function(x) ecdf(distributions[,x]))
-  #}
+  }
   gene.change<-(slopes) # change when colnames on an object with less than two dimensions
   colnames(gene.change)<-colnames(distributions)
 
