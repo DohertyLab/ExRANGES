@@ -7,7 +7,7 @@
 \usage{
 calc.slopes(time.series, cycle=F, last.time.step)
 
-sample.pval.calc(slopes = slopes, sample.size = 10000, use_density_function = F)
+sample.pval.calc(slopes, sample.size, use_density_function = F)
 }
 \description{
 The following two functions are used to calcuate the RANGES values to be used to calculate ExRANGES.
