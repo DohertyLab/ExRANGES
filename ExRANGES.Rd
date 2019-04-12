@@ -1,6 +1,5 @@
 \name{ExRANGES}
 \alias{calc.slope}
-\alias{sample.pval.calc}
 \alias{ExRANGES}
 \alias{RANGES}
 \title{ExRANGES Functions}
@@ -23,16 +22,6 @@ cycle - If data is cyclical then cycle equals T.
 
 last.time.step (numeric) - If cycle equals T, then set last.time.step equal to differnce in time between the start and end of the time series.
 
-#########################################################################
-
-#sample.pval.calc()
-
-slopes - Output of calc.slopes(). Should be transposed pvalues of slopes between time points.
-
-sample.size - How many times should the slopes be sampled for each gene to calculate a pvalue.
-  
-use_density_function - TRUE: pval estimation by cumulative distribution function followed by kernal density estimate.
-                       FALSE: pval estimation by empirical cumulative distribution function.
 }
 \examples{
 
