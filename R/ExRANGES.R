@@ -82,16 +82,16 @@ GRD2.C<-function(x, samples, rw, last.time.step){
    # pvals[which(pvals[,i]==min(pvals[,i])),i]=0
   #}
 
-  pvals<-pvals.transform(pvals, sample.size)
-  colnames(pvals)<-rownames(slopes)
-  if(length(colnames(pvals)) > length(unique(colnames(pvals)))){
-    slopenames=unique(colnames(pvals))
-    pvals_ret=pbsapply(unique(colnames(pvals)),function(x) apply(pvals[,which(colnames(pvals)==x)],1,mean))
-  } else{
-   pvals_ret=pvals
-  }
-  return(pvals_ret)
-}
+ # pvals<-pvals.transform(pvals, sample.size)
+  #colnames(pvals)<-rownames(slopes)
+  #if(length(colnames(pvals)) > length(unique(colnames(pvals)))){
+   # slopenames=unique(colnames(pvals))
+   # pvals_ret=pbsapply(unique(colnames(pvals)),function(x) apply(pvals[,which(colnames(pvals)==x)],1,mean))
+  #} else{
+  # pvals_ret=pvals
+  #}
+  #return(pvals_ret)
+#}
 
 ###Log transform pvals
 pvals.transform<-function(pvals, sample.size){
