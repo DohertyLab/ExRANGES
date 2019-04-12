@@ -5,9 +5,9 @@
 \alias{RANGES}
 \title{ExRANGES Functions}
 \usage{
-calc.slopes(time.series, cycle=F, last.time.step)
+#calc.slopes(time.series, cycle=F, last.time.step)
 
-sample.pval.calc(slopes, sample.size=10000)
+#sample.pval.calc(slopes, sample.size=10000)
 }
 \description{
 #The following two functions are used to calcuate the RANGES values to be used to calculate ExRANGES.
@@ -15,7 +15,7 @@ sample.pval.calc(slopes, sample.size=10000)
 #sample.pval.calc finds the significance of the change in expression between timepoints for each gene.
 }
 \arguments{
-calc.slopes()
+#calc.slopes()
 
 #time.series - A matrix with rows as genes and columns as sample names. Samples must be labeled as XX_samplename, XX=Numeric number for time.
 
@@ -25,7 +25,7 @@ calc.slopes()
 
 #########################################################################
 
-sample.pval.calc()
+#sample.pval.calc()
 
 #slopes - Output of calc.slopes(). Should be transposed pvalues of slopes between time points.
 
