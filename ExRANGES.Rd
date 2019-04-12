@@ -7,7 +7,7 @@
 \usage{
 calc.slopes(time.series, cycle=F, last.time.step)
 
-sample.pval.calc(slopes, sample.size=10000, use_density_function=T) 
+#sample.pval.calc(slopes, sample.size=10000, use_density_function=T) 
 }
 \description{
 The following two functions are used to calcuate the RANGES values to be used to calculate ExRANGES.
@@ -25,7 +25,7 @@ last.time.step (numeric) - If cycle equals T, then set last.time.step equal to d
 
 #########################################################################
 
-sample.pval.calc()
+#sample.pval.calc()
 
 slopes - Output of calc.slopes(). Should be transposed pvalues of slopes between time points.
 
