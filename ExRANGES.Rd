@@ -19,9 +19,9 @@ calc.slopes()
 
 time.series - A matrix with rows as genes and columns as sample names. Samples must be labeled as XX_samplename, XX=Numeric number for time.
 
-cycle - If data is cyclical then cycle=T. 
+cycle - If data is cyclical then cycle equals T. 
 
-last.time.step (numeric) - If cycle=T, then set last.time.step equal to differnce in time between the start and end of the time series.
+last.time.step (numeric) - If cycle equals T, then set last.time.step equal to differnce in time between the start and end of the time series.
 
 #########################################################################
 
