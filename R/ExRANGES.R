@@ -59,7 +59,7 @@ GRD2.C<-function(x, samples, rw, last.time.step){
 #' Time series, slope, ExRANGES
 #' sample.pval.calc(slopes=matrix.of.slopes, sample.size=10000)
                      
-sample.pval.calc<-function(slopes, sample.size=10000, use_density_function=T){
+sample.pval.calc<-function(slopes, sample.size=10000, use_density_function=F){
   print("Calculating Slope Distributions")
   distributions<-pbapply(slopes,2,function(x) sample(x,sample.size,replace=T))
   print("Calculating per Gene p.value")
