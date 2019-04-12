@@ -30,7 +30,6 @@ slopes - Output of calc.slopes(). Should be transposed pvalues of slopes between
 
 sample.size - How many times should the slopes be sampled for each gene to calculate a pvalue.
   
-use_density_function - bi
 }
 \examples{
 
