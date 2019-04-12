@@ -8,8 +8,8 @@
 #' calc.slopes(time.series.matrix, cycle=F)
 #' calc.slopes(time.series.matrix, cycle=T, last.time.step=3.5)
 
-library(pbapply)
-library(spatstat)
+require(pbapply)
+#library(spatstat)
 
 calc.slopes<-function(time.series, cycle=F, last.time.step){
   print("Calculating Slopes")
